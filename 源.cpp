@@ -5,29 +5,29 @@
 using namespace std;
 #define MAXSIZE 100
 
-//¶¯Ì¬¹æ»®|||»úÆ÷ÈË×ßÂ·
+//åŠ¨æ€è§„åˆ’|||æœºå™¨äººèµ°è·¯
 
 
-//µİ¹éËã·¨
+//é€’å½’ç®—æ³•
 //int fun(int cur, int rest, int aim, int N)
-//{//»úÆ÷ÈË´ÓcurÎ»ÖÃ³ö·¨£¬¾­¹ırest²½£¬Ä¿±êÊÇaim£¬Ò»¹²ÓĞN¸öÎ»ÖÃ
-//	if (rest == 0)  // ×ßÍêÁË²»ĞèÒª×ßÁË 
+//{//æœºå™¨äººä»curä½ç½®å‡ºæ³•ï¼Œç»è¿‡restæ­¥ï¼Œç›®æ ‡æ˜¯aimï¼Œä¸€å…±æœ‰Nä¸ªä½ç½®
+//	if (rest == 0)  // èµ°å®Œäº†ä¸éœ€è¦èµ°äº† 
 //	{
 //		if (cur == aim)
 //			return 1;
 //		else
 //			return 0;
 //	}
-//	//²½Êı²»Îª0
+//	//æ­¥æ•°ä¸ä¸º0
 //	if (cur == 1)
-//	{//´¦ÓÚÍ·Î»ÖÃ
+//	{//å¤„äºå¤´ä½ç½®
 //		return fun(cur + 1, rest - 1, aim,N);
 //	}
 //	else if (cur == N)
-//	{//´¦ÓÚÎ²Î»ÖÃ
+//	{//å¤„äºå°¾ä½ç½®
 //		return fun(cur -1, rest - 1, aim, N);
 //	}
-//	//´¦ÓÚÖĞ¼äÎ»ÖÃ
+//	//å¤„äºä¸­é—´ä½ç½®
 //	return fun(cur-1, rest-1, aim, N) + fun(cur+1, rest-1, aim, N);
 //}
 //
@@ -42,13 +42,13 @@ using namespace std;
 
 
 
-//¶¯Ì¬¹æ»®Ëã·¨
-//resµÄ·¶Î§ÊÇ1--N
-//curµÄ·¶Î§ÊÇ1--N
+//åŠ¨æ€è§„åˆ’ç®—æ³•
+//resçš„èŒƒå›´æ˜¯1--N
+//curçš„èŒƒå›´æ˜¯1--N
 
 //int fun(int cur, int  rest, int  aim, int N, int** dp)
 //{
-//	if (dp[cur][rest] != -1)
+//	if (dp[cur][rest] != -1)      //å¦‚æœä¸ä¸º-1è¯´æ˜è¡¨ä¸­å·²ç»æœ‰äº†æ•°æ®
 //	{
 //		return dp[cur][rest];
 //	}
@@ -69,7 +69,7 @@ using namespace std;
 //	{
 //		num= fun(cur-1, rest-1, aim, N, dp)+fun(cur+1, rest-1, aim, N, dp);
 //	}
-//	dp[cur][rest] = num;
+//	dp[cur][rest] = num;       //å°†æ•°æ®å¡«å…¥è¡¨ä¸­ç›¸åº”ä½ç½®
 //	return num;
 //}
 //
@@ -80,7 +80,7 @@ using namespace std;
 //	int rest = 4;
 //	int aim = 4;
 //	int** dp;
-//	dp = (int**)malloc((N)* sizeof(int));
+//	dp = (int**)malloc((N)* sizeof(int*));         //å»ºç«‹ä¸€ä¸ªN*restçš„æ•°ç»„å­˜æ”¾æ•°æ®
 //	for (int i = 0; i <= N ; i++)
 //	{
 //		dp[i] = (int*)malloc((rest) * sizeof(int));
@@ -98,11 +98,11 @@ using namespace std;
 
 //-------------------------------------------------------------------------------
 
-//¶¯Ì¬¹æ»®||×îÖÕ°æ±¾||Ìî±í
+//åŠ¨æ€è§„åˆ’||æœ€ç»ˆç‰ˆæœ¬||å¡«è¡¨
 //
 int fun(int cur, int rest, int aim, int N, int** dp)
 {
-	for (int i = 1; i <= rest; i++)//ÁĞ
+	for (int i = 1; i <= rest; i++)//åˆ—
 	{
 		dp[1][i] = dp[2][i - 1];
 		for (int j = 2; j < N; j++)
@@ -132,13 +132,13 @@ int main()
 			dp[i][j] = 0;
 		}
 	}
-	dp[aim][0] = 1; //µ±rest=0£¬ÇÒaim=curÊ±ºò·µ»Ø1
+	dp[aim][0] = 1; //å½“rest=0ï¼Œä¸”aim=curæ—¶å€™è¿”å›1
 	cout<<fun(cur, rest, aim, N,dp);
 }
 
 
 //  
-//  0 1 2 3 4 rest(ÒÆ¶¯²½Êı)
+//  0 1 2 3 4 rest(ç§»åŠ¨æ­¥æ•°)
 //1 0 0 0 1 0
 //2 0 0 1 0 (3)
 //3 0 1 0 2 0
