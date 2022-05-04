@@ -11,6 +11,9 @@ using namespace std;
 //递归算法
 //int fun(int cur, int rest, int aim, int N)
 //{//机器人从cur位置出法，经过rest步，目标是aim，一共有N个位置
+// 	if (cur<1||cur>N||rest<1||aim<1||aim>N||N<2) //过滤条件
+//      	return -1;
+//
 //	if (rest == 0)  // 走完了不需要走了 
 //	{
 //		if (cur == aim)
@@ -48,6 +51,8 @@ using namespace std;
 
 //int fun(int cur, int  rest, int  aim, int N, int** dp)
 //{
+// 	if (cur<1||cur>N||rest<1||aim<1||aim>N||N<2) //过滤条件
+//      	return -1;
 //	if (dp[cur][rest] != -1)      //如果不为-1说明表中已经有了数据
 //	{
 //		return dp[cur][rest];
@@ -102,6 +107,8 @@ using namespace std;
 //
 int fun(int cur, int rest, int aim, int N, int** dp)
 {
+//	 	if (cur<1||cur>N||rest<1||aim<1||aim>N||N<2) //过滤条件
+//      		return -1;
 	for (int i = 1; i <= rest; i++)//列
 	{
 		dp[1][i] = dp[2][i - 1];
